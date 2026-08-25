@@ -1,0 +1,63 @@
+/* CSS cho Đấu Ải */
+.chapter-container {
+    background: #34495e;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.chapter-header {
+    background: #2c3e50;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #f1c40f;
+    border-bottom: 2px solid #1abc9c;
+}
+
+.stages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 15px;
+    padding: 15px;
+}
+
+.stage-btn {
+    background: #7f8c8d; /* Màu mặc định cho ải khoá */
+    color: white;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.stage-btn.active {
+    background: #3498db;
+}
+
+.stage-btn.active:hover {
+    background: #2980b9;
+}
+
+.stage-btn.boss {
+    background: #e74c3c !important; /* Luôn nổi bật nếu là boss và active */
+}
+
+.stage-btn.boss:hover {
+    background: #c0392b !important;
+}
+
+.stage-btn.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.stage-btn .stage-status {
+    font-size: 0.7em;
+    color: #bdc3c7;
+}
