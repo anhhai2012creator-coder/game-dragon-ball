@@ -1,0 +1,100 @@
+/* CSS cho Màn hình trận đấu */
+.battle-arena {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2c3e50;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #3498db;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 40%;
+}
+
+.battle-char {
+    background: #34495e;
+    padding: 10px;
+    border: 2px solid #7f8c8d;
+    border-radius: 5px;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.battle-char.active {
+    border-color: #f1c40f;
+    transform: scale(1.05);
+}
+
+.battle-char.dead {
+    opacity: 0.3;
+    filter: grayscale(100%);
+}
+
+.char-name {
+    font-weight: bold;
+    color: #ecf0f1;
+    margin-bottom: 5px;
+}
+
+.hp-bar-container, .en-bar-container {
+    width: 100%;
+    height: 10px;
+    background: #555;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.hp-bar {
+    height: 100%;
+    background: #e74c3c;
+    width: 100%;
+    transition: width 0.3s;
+}
+
+.en-bar {
+    height: 100%;
+    background: #3498db;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+.vs {
+    font-size: 2em;
+    font-weight: bold;
+    color: #e74c3c;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.battle-log {
+    background: rgba(0,0,0,0.5);
+    height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-family: monospace;
+    color: #bdc3c7;
+    margin-bottom: 15px;
+}
+
+.battle-log p {
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 5px;
+}
+
+.battle-log p.turn-info {
+    color: #f1c40f;
+    font-weight: bold;
+}
+
+.battle-log p.damage { color: #e74c3c; }
+.battle-log p.heal { color: #2ecc71; }
+.battle-log p.skill { color: #9b59b6; font-weight: bold; }
