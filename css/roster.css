@@ -1,0 +1,76 @@
+/* Bổ sung css cho Roster/Danh sách */
+.roster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.char-card {
+    background: #34495e;
+    border: 2px solid #1abc9c;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+}
+
+.char-card h4 {
+    color: #f1c40f;
+    margin-bottom: 5px;
+}
+
+.char-stats {
+    font-size: 0.85em;
+    text-align: left;
+    margin: 10px 0;
+    line-height: 1.4;
+    color: #bdc3c7;
+}
+
+.btn-upgrade {
+    background: #e67e22;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 5px;
+}
+.btn-upgrade:hover { background: #d35400; }
+
+.btn-form {
+    background: #2ecc71;
+    width: 100%;
+    padding: 8px;
+}
+.btn-form:hover { background: #27ae60; }
+
+.formation-slots {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0 25px;
+}
+
+.form-slot {
+    background: rgba(0,0,0,0.3);
+    border: 2px dashed #7f8c8d;
+    border-radius: 8px;
+    padding: 15px;
+    width: 150px;
+    text-align: center;
+}
+
+.form-slot h5 {
+    color: #95a5a6;
+    margin-bottom: 10px;
+}
+
+.form-slot .slot-name {
+    font-weight: bold;
+    color: #ecf0f1;
+}
+
+.slot-actions button {
+    background: #e74c3c;
+    padding: 5px;
+    font-size: 0.8em;
+    margin-top: 10px;
+}
