@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Battler Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/roster.css">
+    <link rel="stylesheet" href="css/battle.css">
+    <link rel="stylesheet" href="css/campaign.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Header: Hiển thị tài nguyên -->
+        <header id="top-bar">
+            <div class="player-info">
+                <span>Lv. <span id="ui-player-level">1</span></span>
+                <span class="exp-bar">(<span id="ui-player-exp">0</span>/<span id="ui-player-max-exp">100</span>)</span>
+            </div>
+            <div class="resources">
+                <div class="resource" title="Kim cương"><span class="icon">💎</span> <span id="ui-diamonds">0</span></div>
+                <div class="resource" title="Xu"><span class="icon">🪙</span> <span id="ui-coins">0</span></div>
+                <div class="resource" title="Vật phẩm nâng cấp (VPNC)"><span class="icon">📜</span> <span id="ui-vpnc">0</span></div>
+                <div class="resource" title="Viên ngọc thần bí (VNTB)"><span class="icon">🔮</span> <span id="ui-vntb">0</span></div>
+            </div>
+        </header>
+
+        <!-- Main Content: Hiển thị các tab -->
+        <main id="main-content">
+            <!-- Sảnh chính -->
+            <section id="tab-home" class="tab-content active">
+                <h2>Sảnh Chính</h2>
+                <div class="home-menu">
+                    <button class="nav-btn" data-target="tab-campaign">Đấu Ải (1)</button>
+                    <button class="nav-btn" data-target="tab-events">Sự Kiện (2)</button>
+                    <button class="nav-btn" data-target="tab-summon">Triệu Hồi (4)</button>
+                    <button class="nav-btn" data-target="tab-roster">Danh Sách</button>
+                    <button class="nav-btn" data-target="tab-inventory">Túi Đồ</button>
+                </div>
+            </section>
+
+            <!-- Đấu Ải -->
+            <section id="tab-campaign" class="tab-content">
+                <button class="nav-btn back-btn" data-target="tab-home">Quay lại Sảnh</button>
+                <h2>Đấu Ải</h2>
+                <div id="campaign-list">
+                    <!-- Sẽ render bằng JS -->
+                </div>
+            </section>
+
+            <!-- Sự Kiện -->
+            <section id="tab-events" class="tab-content">
+                <button class="nav-btn back-btn" data-target="tab-home">Quay lại Sảnh</button>
+                <h2>Sự Kiện</h2>
+                <div id="event-date"></div>
+                <div class="event-item">
+                    <p>Chúng tôi sẽ sớm cập nhật sự kiện thú vị!</p>
+                </div>
+                <div class="event-item">
+                    <h3>Giftcode</h3>
+                    <input type="text" id="giftcode-input" placeholder="Nhập code tại đây">
+                    <button id="btn-redeem-code">Nhận</button>
+                    <p id="giftcode-message"></p>
+                </div>
+            </section>
+
+            <!-- Triệu Hồi -->
+            <section id="tab-summon" class="tab-content">
+                <button class="nav-btn back-btn" data-target="tab-home">Quay lại Sảnh</button>
+                <h2>Triệu Hồi</h2>
+                <div class="summon-tabs">
+                    <button id="btn-summon-daily" class="active">Khu vui chơi</button>
+                    <button id="btn-summon-gacha">Triệu hồi nhân vật</button>
+                </div>
+                <div id="summon-daily-content" class="summon-section">
+                    <h3>Đăng nhập hằng ngày</h3>
+                    <button id="btn-daily-login">Nhận quà hôm nay</button>
+                    <p id="daily-login-msg"></p>
+                </div>
+                <div id="summon-gacha-content" class="summon-section hidden">
+                    <h3>Triệu hồi bằng VNTB</h3>
+                    <p>Tiêu hao 1 Viên ngọc thần bí (🔮) để triệu hồi</p>
+                    <button id="btn-gacha-1">Triệu hồi x1</button>
+                    <div id="gacha-result"></div>
+                </div>
+            </section>
+
+            <!-- Danh Sách (Roster) -->
+            <section id="tab-roster" class="tab-content">
+                <button class="nav-btn back-btn" data-target="tab-home">Quay lại Sảnh</button>
+                <h2>Danh Sách & Đội Hình</h2>
+                
+                <div class="formation-section">
+                    <h3>Đội hình ra trận (Thứ tự đánh)</h3>
+                    <div id="current-formation" class="formation-slots">
+                        <!-- JS Render: Tướng 1, Tướng 2, Tướng 3 -->
+                    </div>
+                </div>
+
+                <h3>Nhân vật sở hữu</h3>
+                <div id="character-list" class="roster-grid">
+                    <!-- JS Render -->
+                </div>
+            </section>
+
+            <!-- Túi Đồ -->
+            <section id="tab-inventory" class="tab-content">
+                <button class="nav-btn back-btn" data-target="tab-home">Quay lại Sảnh</button>
+                <h2>Túi Đồ</h2>
+                <div class="inventory-grid">
+                    <div class="inv-item">
+                        <span class="icon">💎</span>
+                        <div class="inv-name">Kim cương</div>
+                        <div class="inv-desc">Dùng để mua sắm</div>
+                    </div>
+                    <div class="inv-item">
+                        <span class="icon">🪙</span>
+                        <div class="inv-name">Xu</div>
+                        <div class="inv-desc">Tiền tệ cơ bản</div>
+                    </div>
+                    <div class="inv-item">
+                        <span class="icon">📜</span>
+                        <div class="inv-name">VPNC</div>
+                        <div class="inv-desc">Vật phẩm nâng cấp nhân vật</div>
+                    </div>
+                    <div class="inv-item">
+                        <span class="icon">🔮</span>
+                        <div class="inv-name">VNTB</div>
+                        <div class="inv-desc">Viên ngọc thần bí dùng để triệu hồi</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Màn Hình Trận Đấu -->
+            <section id="tab-battle" class="tab-content">
+                <!-- Sẽ chi tiết ở phần Battle Engine -->
+                <h2>Đang chiến đấu...</h2>
+                <div class="battle-arena">
+                    <div class="team" id="team-player">
+                        <!-- Render Player characters -->
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="team" id="team-enemy">
+                        <!-- Render Enemy characters -->
+                    </div>
+                </div>
+                <div id="battle-log" class="battle-log"></div>
+                <button id="btn-end-battle" class="hidden">Trở về Sảnh</button>
+            </section>
+
+        </main>
+    </div>
+    
+    <script src="js/data.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/battle.js"></script>
+    <script src="js/battle_skills.js"></script>
+    <script src="js/campaign.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
